@@ -21,4 +21,7 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/komentar', function () {
+    return view('ForumKomen');
+});
 
