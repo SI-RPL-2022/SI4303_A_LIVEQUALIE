@@ -40,3 +40,7 @@ Route::get('/artikel/add', function () {
 Route::get('/artikel/x/edit', function () {
     return view('editartikel');
 });
+
+Route::get('/thread', function () {
+    return view('ThreadForum');
+});
