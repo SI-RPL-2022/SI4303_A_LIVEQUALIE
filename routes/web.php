@@ -25,3 +25,6 @@ Route::get('/komentar', function () {
     return view('ForumKomen');
 });
 
+Route::get('/artikel/admin', function () {
+    return view('ArtikelAdmin');
+});
