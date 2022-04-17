@@ -32,3 +32,11 @@ Route::get('/artikel/admin', function () {
 Route::get('/forum', function () {
     return view('forumindex');
 });
+
+Route::get('/artikel/add', function () {
+    return view('addartikel');
+});
+
+Route::get('/artikel/x/edit', function () {
+    return view('editartikel');
+});
