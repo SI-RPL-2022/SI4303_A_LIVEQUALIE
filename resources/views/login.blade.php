@@ -14,7 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-        <title>REGISTER</title>
+        <title>LOGIN</title>
     </head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Inter');
@@ -29,13 +29,14 @@
         <!-- NAVBAR Regis&Login -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded fixed-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="" style="color: #D074D8;"><img src="logo.png" alt="" style="margin-left: 0.2cm;"><b>LIVEQUALIE</b></a>
+              <a class="navbar-brand" href="/" style="color: #D074D8;"><img src="/logo.png" alt="" style="margin-left: 0.2cm;"><b>LIVEQUALIE</b></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
             </div>
         </nav>
-        <form action="" method="" enctype="multipart/form-data">
+        <form action="/login" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="row justify-content-center" style="margin-top: 10rem;">
             <div class="col-lg-5 col-lg-offset-5 ">
             <div class="card h-100">
@@ -57,10 +58,10 @@
                     <a href="" style="padding-left: 190px; color: #37474F;">Forgot Password?</a>
                 </div>
                 <div class="form-group  text-center" style="margin-top: 30px">
-                    <button type="submit" name="login" class="btn" style="background-color: #D074D8; color: white;">Login</button>
+                    <button type="submit" name="button" class="btn" style="background-color: #D074D8; color: white;">Login</button>
                 </div>
                 <div class="container login">
-                    <center><p style="color: #37474F;">Don't have an account? <a href="Register.html">Register</a>.</p></center>
+                    <center><p style="color: #37474F;">Don't have an account? <a href="/register">Register</a>.</p></center>
                 </div>
                 </div>
                 </div>
