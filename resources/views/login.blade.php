@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <p style="margin-top:5px; color: #37474F;">Password</p>
-                    <input required type="password" name="pass" class="form-control form-control-sm" placeholder="Password" aria-describedby="helpId">
+                    <input required type="password" name="password" class="form-control form-control-sm" placeholder="Password" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 1px;">

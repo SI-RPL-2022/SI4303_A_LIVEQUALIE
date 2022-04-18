@@ -158,10 +158,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="me-2" style="color: #D074D8;" width="30" height="30" fill="currentColor" viewBox="0 0 576 512"><path d="M192 352C138.1 352 96 309 96 256C96 202.1 138.1 160 192 160C245 160 288 202.1 288 256C288 309 245 352 192 352zM384 448H192C85.96 448 0 362 0 256C0 149.1 85.96 64 192 64H384C490 64 576 149.1 576 256C576 362 490 448 384 448zM384 128H192C121.3 128 64 185.3 64 256C64 326.7 121.3 384 192 384H384C454.7 384 512 326.7 512 256C512 185.3 454.7 128 384 128z"/></svg>
             <button class="button me-2">Donate Now</button>
             <li class="nav-item dropdown" style="list-style-type: none;">
-              <a id="p1" class="nav-link dropdown-toggle" style="margin-bottom: 2px;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Larasati N. <svg xmlns="http://www.w3.org/2000/svg" style="color: #D074D8;" width="15" height="15" fill="currentColor" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg></a>
+              <a id="p1" class="nav-link dropdown-toggle" style="margin-bottom: 2px;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= explode(" ",$data["0"]["name"])[0]?>  <svg xmlns="http://www.w3.org/2000/svg" style="color: #D074D8;" width="15" height="15" fill="currentColor" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
+                <li><a class="dropdown-item" href="/logout">Log out</a></li>
               </ul>
             </li>
           </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/komentar', function () {
+Route::get('/login', [MainController::class, "getLogin"])->name("login.index");
+Route::post('/login', [MainController::class, "postLogin"])->name("login.post");
+Route::get('/logout', [MainController::class, "logout"])->name("logout.index");
+Route::get('/register', [MainController::class, "getSignup"])->name("signup.index");
+Route::post('/register', [MainController::class, "postSignup"])->name("signup.post");
+
+Route::get('/forum/x', function () {
     return view('ForumKomen');
 });
 
@@ -29,9 +36,7 @@ Route::get('/artikel/admin', function () {
     return view('ArtikelAdmin');
 });
 
-Route::get('/forum', function () {
-    return view('forumindex');
-});
+Route::get('/forum', [MainController::class, "getForum"])->name("forumindex.index");
 
 Route::get('/artikel/add', function () {
     return view('addartikel');
@@ -41,6 +46,9 @@ Route::get('/artikel/x/edit', function () {
     return view('editartikel');
 });
 
-Route::get('/thread', function () {
+Route::get('/forum/add', function () {
     return view('ThreadForum');
 });
+
+
+// require __DIR__.'/auth.php';

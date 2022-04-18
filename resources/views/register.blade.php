@@ -62,11 +62,11 @@
                 </div>
                 <div class="form-group">
                     <p style="margin-top:5px; color: #37474F;">Password</p>
-                    <input required type="text" name="password" class="form-control form-control-sm" placeholder="Password" aria-describedby="helpId">
+                    <input required type="password" name="password" class="form-control form-control-sm" placeholder="Password" aria-describedby="helpId">
                 </div>
                 <div class="form-group">
                     <p style="margin-top:5px; color: #37474F;">Confirm Password</p>
-                    <input required type="text" name="passconf" class="form-control form-control-sm" placeholder="Confirm Password" aria-describedby="helpId">
+                    <input required type="password" name="passconf" class="form-control form-control-sm" placeholder="Confirm Password" aria-describedby="helpId">
                 </div>
                 <div class="form-group  text-center" style="margin-top: 30px">
                     <button type="submit" name="button" class="btn" style="background-color: #D074D8; color: white;">Register</button>
