@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donation;
+use App\Models\Glosarium;
+use App\Models\Videos;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Forum;
 use App\Models\Verification;
 use App\Models\Article;
+use App\Models\Question;
+use App\Models\Aboutus;
 use PhpParser\Builder\Function_;
 use PhpParser\Node\Expr\FuncCall;
 use Session;
