@@ -43,6 +43,10 @@ Route::get('/videos/{id}/delete' , [\App\Http\Controllers\videosController::clas
 
 Route::get('/quiz' , [\App\Http\Controllers\QuizController::class , 'quizIndex'])->name('quiz.index');
 Route::post('/quiz/result' , [\App\Http\Controllers\QuizController::class , 'quizResult'])->name('quiz.result');
+Route::post('/quiz/add' , [\App\Http\Controllers\QuizController::class , 'quizAdd'])->name('quiz.add');
+Route::get('/quiz/{id}/edit' , [\App\Http\Controllers\QuizController::class , 'quizEdit'])->name('quiz.edit');
+Route::post('/quiz/{id}/edit' , [\App\Http\Controllers\QuizController::class , 'postquizEdit'])->name('quiz.edits');
+Route::get('/quiz/{id}/delete' , [\App\Http\Controllers\QuizController::class , 'quizDelete'])->name('quiz.delete');
 
 Route::get('/forum', [\App\Http\Controllers\forumController::class, "indexForum"])->name("forum.index");
 Route::get('/forum/add', [\App\Http\Controllers\forumController::class , 'addForum'])->name('forum.add');

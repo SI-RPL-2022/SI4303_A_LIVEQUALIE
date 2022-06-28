@@ -31,4 +31,30 @@ class QuizController extends Controller
         return view('quizResult' , ['data'=>$tess , 'total' => $nilai]);
 
     }
+
+    public function quizAdd(Request $request){
+        $question = new Question();
+        $question->title = $request->title;
+        $question->save();
+
+        $benar = new Answer();
+        $benar->question_id = $question->id;
+        $benar->choices = $request->benar;
+        $benar->is_correct = 1;
+        $benar->save();
+
+        $salah1 = new Answer();
+        $salah1->question_id = $question->id;
+        $salah1->choices = $request->salah1;
+        $salah1->is_correct = 0;
+        $salah1->save();
+
+        if ($request->salah2 != null){
+            $salah2 = new Answer();
+            $salah2->question_id = $question->id;
+            $salah2->choices = $request->salah2;
+            $salah2->is_correct = 0;
+            $salah2->save();
+        }
+    }
 }
