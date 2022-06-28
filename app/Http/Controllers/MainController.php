@@ -131,4 +131,19 @@ class MainController extends Controller
 
         return view('searchresult' , ['data'=>$data , 'value'=>$value, 'article'=>$article , 'forum'=>$forum , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation]);
     }
+
+    public function profile(Request $req){
+        $data = $req->session()->all();
+        $profile = User::find($data[0]['id']);
+
+        return view('profile' , ['profile'=>$profile, 'data'=>$data]);
+    }
+
+
+    public function profileEdit(Request $req){
+        $data = $req->session()->all();
+        $profile = User::find($data[0]['id']);
+
+        return view('profileEdit' , ['profile'=>$profile, 'data'=>$data]);
+    }
 }
