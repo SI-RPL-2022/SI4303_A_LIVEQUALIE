@@ -103,17 +103,32 @@ class MainController extends Controller
 
         return view('dashboard' , ['data'=>$data , 'article'=>$article, 'view'=>$view , 'forum'=>$forum, 'comment'=>$comment , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation , 'total'=>$total, 'question'=>$question]);
 }
+   public function aboutus(Request $req){
+        $data = $req->session()->all();
+        $fill = Aboutus::where('id' , 1)->get();
+        
+        return view('aboutus' , ['data' => $data,'fill'=>$fill]);
 
-public function search(Request $req){
-    $data = $req->session()->all();
-    $value = $req->search;
-    $article = Article::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
-    $forum = Forum::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
-    $video = Videos::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
-    $glos = Glosarium::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
-    $donation = Donation::all();
+    }
+    
+    public function aboutusUpdate(Request $request , $id){
+        $data = Aboutus::find($id);
+        $data->isi = $request->isi;
+        $data->update();
+
+        return redirect()->route('aboutus');
+    }
+
+    public function search(Request $req){
+        $data = $req->session()->all();
+        $value = $req->search;
+        $article = Article::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+        $forum = Forum::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+        $video = Videos::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+        $glos = Glosarium::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+        $donation = Donation::all();
 
 
-    return view('searchresult' , ['data'=>$data , 'value'=>$value, 'article'=>$article , 'forum'=>$forum , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation]);
-}
+        return view('searchresult' , ['data'=>$data , 'value'=>$value, 'article'=>$article , 'forum'=>$forum , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation]);
+    }
 }

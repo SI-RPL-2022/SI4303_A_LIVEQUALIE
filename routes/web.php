@@ -51,5 +51,8 @@ Route::post('/glossary' , [\App\Http\Controllers\glosariumController::class , 'g
 Route::post('/glossary/{id}' , [\App\Http\Controllers\glosariumController::class , 'glosariumUpdate'])->name('glosarium.update');
 Route::get('/glossary/{id}/delete' , [\App\Http\Controllers\glosariumController::class , 'glosariumDelete'])->name('glosarium.delete');
 
+Route::get('/aboutus' , [MainController::class , 'aboutus'])->name('aboutus');
+Route::post('/aboutus/{id}' , [MainController::class , 'aboutusUpdate'])->name('aboutus.edit');
+
 Route::get('/search/' , [MainController::class , 'search'])->name('search');
 // require __DIR__.'/auth.php';
