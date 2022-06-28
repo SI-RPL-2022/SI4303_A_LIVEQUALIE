@@ -14,10 +14,8 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [MainController::class, "index"])->name("index");
+Route::get('/landing' , [MainController::class , 'landing'])->name('landing');
 Route::get('/dashboard' , [MainController::class , 'dashboard'])->name('dashboard');
 
 Route::get('/login', [MainController::class, "getLogin"])->name("login.index");

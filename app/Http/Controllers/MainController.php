@@ -71,6 +71,29 @@ class MainController extends Controller
 
     }
 
+    public function index(Request $req){
+        $data = $req->session()->all();
+        if(isset($data["status"]) && $data['status'] == "logged-in")
+            if($data['0']['username'] == "admin")
+                return redirect()->route('dashboard');
+            else
+                return redirect()->route('landing');
+        else
+            return redirect()->route('landing');
+    }
+
+    public function landing(Request $req){
+        $data = $req->session()->all();
+        $article = Article::orderByDesc('id')->take(3)->get();
+        $forum = Forum::orderByDesc('id')->take(4)->get();
+        $video = Videos::orderByDesc('id')->take(2)->get();
+        $glos = Glosarium::orderByDesc('id')->take(1)->get();
+        $donation = Donation::all();
+
+
+        return view('landing' , ['data'=>$data , 'article'=>$article , 'forum'=>$forum , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation]);
+    }
+
     public function dashboard(Request $req){
         $data = $req->session()->all();
         $forum = count(Forum::all());
