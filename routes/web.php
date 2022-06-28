@@ -36,4 +36,7 @@ Route::get('/artikel/delete/{id}' , [\App\Http\Controllers\artikelController::cl
 
 Route::get('/videos', [\App\Http\Controllers\videosController::class , 'videoIndex'])->name('video.index');
 Route::get('/videos/{id}' , [\App\Http\Controllers\videosController::class , 'videoDetail'])->name('video.detail');
+
+Route::get('/quiz' , [\App\Http\Controllers\QuizController::class , 'quizIndex'])->name('quiz.index');
+Route::post('/quiz/result' , [\App\Http\Controllers\QuizController::class , 'quizResult'])->name('quiz.result');
 // require __DIR__.'/auth.php';
