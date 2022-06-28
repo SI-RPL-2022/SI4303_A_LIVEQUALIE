@@ -28,27 +28,10 @@ Route::get('/logout', [MainController::class, "logout"])->name("logout.index");
 Route::get('/register', [MainController::class, "getSignup"])->name("signup.index");
 Route::post('/register', [MainController::class, "postSignup"])->name("signup.post");
 
-Route::get('/forum/x', function () {
-    return view('ForumKomen');
-});
-
-Route::get('/artikel/admin', function () {
-    return view('ArtikelAdmin');
-});
-
-Route::get('/forum', [MainController::class, "getForum"])->name("forumindex.index");
-
-Route::get('/artikel/add', function () {
-    return view('addartikel');
-});
-
-Route::get('/artikel/x/edit', function () {
-    return view('editartikel');
-});
-
-Route::get('/forum/add', function () {
-    return view('ThreadForum');
-});
-
+Route::get('/artikel/create' , [\App\Http\Controllers\artikelController::class ,'createArtikel'])->name('artikel.create');
+Route::post('/artikel/create' , [\App\Http\Controllers\artikelController::class ,'postcreateArtikel'])->name('artikel.create');
+Route::get('/artikel/{id}/edit' , [\App\Http\Controllers\artikelController::class , 'editArtikel'])->name('artikel.edit');
+Route::post('/artikel/{id}/edit' , [\App\Http\Controllers\artikelController::class , 'posteditArtikel'])->name('artikel.edit');
+Route::get('/artikel/delete/{id}' , [\App\Http\Controllers\artikelController::class , 'deleteArtikel'])->name('artikel.delete');
 
 // require __DIR__.'/auth.php';
