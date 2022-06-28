@@ -47,5 +47,9 @@ Route::post('/forum/add' , [\App\Http\Controllers\forumController::class , 'post
 Route::get('/forum/{id}', [\App\Http\Controllers\forumController::class, "detailForum"])->name("forum.detail");
 Route::post('/forum/{id}', [\App\Http\Controllers\forumController::class, "addComment"])->name("comment.add");
 
+Route::post('/glossary' , [\App\Http\Controllers\glosariumController::class , 'glosariumAdd'])->name('glosarium.add');
+Route::post('/glossary/{id}' , [\App\Http\Controllers\glosariumController::class , 'glosariumUpdate'])->name('glosarium.update');
+Route::get('/glossary/{id}/delete' , [\App\Http\Controllers\glosariumController::class , 'glosariumDelete'])->name('glosarium.delete');
+
 Route::get('/search/' , [MainController::class , 'search'])->name('search');
 // require __DIR__.'/auth.php';
