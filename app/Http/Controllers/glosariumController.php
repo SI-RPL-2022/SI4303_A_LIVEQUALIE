@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class glosariumController extends Controller
 {
+    public function glosariumIndex(Request $request){
+        $data = $request->session()->all();
+        $glossary = Glosarium::all();
+        return view('glosarium' ,['data'=>$data , 'glossary' =>$glossary]);
+    }
+    
     public function glosariumAdd(Request $request){
         $glossary = new Glosarium();
         $glossary->title = $request->title;
