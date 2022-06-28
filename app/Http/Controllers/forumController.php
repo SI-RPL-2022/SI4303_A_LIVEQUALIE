@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 
 class forumController extends Controller
 {
+    public function indexForum(Request $req)
+    {
+        $data = $req->session()->all();
+        $user = User::all();
+        $forum  = Forum::all();
+        $comment = Comment::all();
+        $modus = $comment->pluck('forum_id')->mode();
+        $hot = $forum->find($modus[0]);
+        return view("forumIndex",['data' => $data , 'forum'=>$forum, 'user'=>$user, 'comment'=>$comment, 'hot'=>$hot]);
+    }
+    
     public function detailForum($id , Request $req){
         $data = $req->session()->all();
         $user = User::all();
