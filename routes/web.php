@@ -70,4 +70,9 @@ Route::get('/donation' , [\App\Http\Controllers\donationController::class , 'don
 Route::post('/donation' , [\App\Http\Controllers\donationController::class , 'donationAdd'])->name('donation');
 
 Route::get('/search/' , [MainController::class , 'search'])->name('search');
+
+Route::post('/landing' , [MainController::class , 'setCookie'])->name('cookie.post');
+Route::get('/cookie' , [MainController::class , 'landing']);
+Route::get('/getcookie' , [MainController::class , 'getCookie']);
+
 // require __DIR__.'/auth.php';

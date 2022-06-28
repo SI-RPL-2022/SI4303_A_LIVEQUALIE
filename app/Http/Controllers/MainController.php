@@ -138,4 +138,17 @@ class MainController extends Controller
 
         return view('profileEdit' , ['profile'=>$profile, 'data'=>$data]);
     }
+
+    public function setCookie(Request $request){
+        $minutes = 999;
+        $value = $request->v;
+        $response = new Response('Set Cookie');
+        $response->cookie('theme', $value, $minutes);
+        return redirect()->back()->withCookie('theme', $value, $minutes);
+     }
+
+     public function getCookie(Request $request){
+        $value = $request->cookie('theme');
+        echo $value;
+     }
 }
