@@ -66,5 +66,8 @@ Route::get('/profile', [MainController::class , 'profile'])->name('profile.index
 Route::get('/profile/edit', [MainController::class , 'profileEdit'])->name('profile.edit');
 Route::post('/profile/edit' , [MainController::class , 'postprofileEdit'])->name('profile.edit');
 
+Route::get('/donation' , [\App\Http\Controllers\donationController::class , 'donation'])->name('donation');
+Route::post('/donation' , [\App\Http\Controllers\donationController::class , 'donationAdd'])->name('donation');
+
 Route::get('/search/' , [MainController::class , 'search'])->name('search');
 // require __DIR__.'/auth.php';
