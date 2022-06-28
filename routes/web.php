@@ -26,8 +26,11 @@ Route::get('/logout', [MainController::class, "logout"])->name("logout.index");
 Route::get('/register', [MainController::class, "getSignup"])->name("signup.index");
 Route::post('/register', [MainController::class, "postSignup"])->name("signup.post");
 
+Route::get('/artikel' , [\App\Http\Controllers\artikelController::class , 'indexArtikel'])->name('artikel.index');
+Route::get('/artikel/all' , [\App\Http\Controllers\artikelController::class , 'indexallArtikel'])->name('artikel.all');
 Route::get('/artikel/create' , [\App\Http\Controllers\artikelController::class ,'createArtikel'])->name('artikel.create');
 Route::post('/artikel/create' , [\App\Http\Controllers\artikelController::class ,'postcreateArtikel'])->name('artikel.create');
+Route::get('/artikel/{id}' , [\App\Http\Controllers\artikelController::class , 'detailArtikel'])->name('artikel.detail');
 Route::get('/artikel/{id}/edit' , [\App\Http\Controllers\artikelController::class , 'editArtikel'])->name('artikel.edit');
 Route::post('/artikel/{id}/edit' , [\App\Http\Controllers\artikelController::class , 'posteditArtikel'])->name('artikel.edit');
 Route::get('/artikel/delete/{id}' , [\App\Http\Controllers\artikelController::class , 'deleteArtikel'])->name('artikel.delete');
