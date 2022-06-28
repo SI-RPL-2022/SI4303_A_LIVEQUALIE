@@ -33,7 +33,10 @@ Route::post('/artikel/{id}/edit' , [\App\Http\Controllers\artikelController::cla
 Route::get('/artikel/delete/{id}' , [\App\Http\Controllers\artikelController::class , 'deleteArtikel'])->name('artikel.delete');
 
 Route::get('/videos', [\App\Http\Controllers\videosController::class , 'videoIndex'])->name('video.index');
+Route::post('/videos' , [\App\Http\Controllers\videosController::class , 'videoAdd'])->name('video.add');
 Route::get('/videos/{id}' , [\App\Http\Controllers\videosController::class , 'videoDetail'])->name('video.detail');
+Route::post('/videos/{id}/edit' , [\App\Http\Controllers\videosController::class , 'videoEdit'])->name('video.edit');
+Route::get('/videos/{id}/delete' , [\App\Http\Controllers\videosController::class , 'videoDelete'])->name('video.delete');
 
 Route::get('/quiz' , [\App\Http\Controllers\QuizController::class , 'quizIndex'])->name('quiz.index');
 Route::post('/quiz/result' , [\App\Http\Controllers\QuizController::class , 'quizResult'])->name('quiz.result');
