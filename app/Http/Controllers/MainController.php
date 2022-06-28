@@ -16,45 +16,37 @@ use Session;
 class MainController extends Controller
 {
     public function getLogin(Request $req)
-    {   
+    {
         if ($req->session()->get("status") == "logged-in")
-        {
-            return redirect("/forum");
-        } 
-        
-        else
+            return redirect('/');
 
-        {   $data = $req->session()->all();
-            return view("login",compact("data"));
-        }
-        
+        else
+            return view("login");
     }
 
-    public function postLogin(Request $req) 
+    public function postLogin(Request $req)
     {
         $user = User::where("username", $req->username)->where("password",md5($req->password))->get();
         $user = $user->toArray();
-        
+
         if (count($user) > 0){
             session($user);
             $req->session()->put("status","logged-in");
-            return redirect("/forum");
+            return redirect()->back();
         } else {
             $req->session()->flash("message","Invalid Username or Password");
             return redirect("/login");
         }
-       
+
     }
 
-    public function getSignup(Request $req) 
+    public function getSignup(Request $req)
     {
         return view("register");
     }
 
-    public function postSignup(Request $req) 
-    {   
-        // $profpic = time()."-pp.".$req->profpic->extension();
-        // $req->profpic->move(public_path('images/upload'),$profpic);
+    public function postSignup(Request $req)
+    {
 
         $encrypted = md5($req->password);
         $user = new User();
@@ -63,7 +55,7 @@ class MainController extends Controller
         $user->username = $req->username;
         $user->phone = $req->phone;
         $user->password = $encrypted;
-        $user->profpic = 'a.jpg';
+        $user->profpic = 'default.jpeg';
         $user->save();
 
         $req->session()->flash("message","Sign up sucessful, please log in");
@@ -71,12 +63,12 @@ class MainController extends Controller
         return redirect("/login");
     }
 
-    public function logout(Request $req) 
-    {   
+    public function logout(Request $req)
+    {
         $req->session()->flush();
         $req->session()->flash("message","You are logged out");
-        return redirect("/login");
-        
+        return redirect("/");
+
     }
 
     public function dashboard(Request $req){
