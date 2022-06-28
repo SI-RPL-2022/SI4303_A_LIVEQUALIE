@@ -103,4 +103,17 @@ class MainController extends Controller
 
         return view('dashboard' , ['data'=>$data , 'article'=>$article, 'view'=>$view , 'forum'=>$forum, 'comment'=>$comment , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation , 'total'=>$total, 'question'=>$question]);
 }
+
+public function search(Request $req){
+    $data = $req->session()->all();
+    $value = $req->search;
+    $article = Article::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+    $forum = Forum::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+    $video = Videos::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+    $glos = Glosarium::orderByDesc('id')->where('title' , 'LIKE' , "%$value%")->get();
+    $donation = Donation::all();
+
+
+    return view('searchresult' , ['data'=>$data , 'value'=>$value, 'article'=>$article , 'forum'=>$forum , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation]);
+}
 }

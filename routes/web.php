@@ -40,4 +40,6 @@ Route::post('/quiz/result' , [\App\Http\Controllers\QuizController::class , 'qui
 
 Route::get('/forum/{id}', [\App\Http\Controllers\forumController::class, "detailForum"])->name("forum.detail");
 Route::post('/forum/{id}', [\App\Http\Controllers\forumController::class, "addComment"])->name("comment.add");
+
+Route::get('/search/' , [MainController::class , 'search'])->name('search');
 // require __DIR__.'/auth.php';
