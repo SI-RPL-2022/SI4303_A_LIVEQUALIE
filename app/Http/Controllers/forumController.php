@@ -19,6 +19,25 @@ class forumController extends Controller
         $hot = $forum->find($modus[0]);
         return view("forumIndex",['data' => $data , 'forum'=>$forum, 'user'=>$user, 'comment'=>$comment, 'hot'=>$hot]);
     }
+
+    public function addForum(Request $req){
+        $data = $req->session()->all();
+        if(isset($data["status"]) && $data['status'] == "logged-in")
+        return view('forumAdd' ,['data'=>$data]);
+        else
+            return view('login');
+    }
+
+    public function postaddForum(Request $req){
+        $data = $req->session()->all();
+        $forum = new Forum();
+        $forum->user_id = $data['0']['id'];
+        $forum->title = $req->judul;
+        $forum->content = $req->konten;
+        $forum->save();
+        return redirect(route('forum.index'))->with('berhasil' , 'Berhasil Membuat Forum');
+    }
+
     
     public function detailForum($id , Request $req){
         $data = $req->session()->all();

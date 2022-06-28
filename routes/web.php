@@ -42,6 +42,8 @@ Route::get('/quiz' , [\App\Http\Controllers\QuizController::class , 'quizIndex']
 Route::post('/quiz/result' , [\App\Http\Controllers\QuizController::class , 'quizResult'])->name('quiz.result');
 
 Route::get('/forum', [\App\Http\Controllers\forumController::class, "indexForum"])->name("forum.index");
+Route::get('/forum/add', [\App\Http\Controllers\forumController::class , 'addForum'])->name('forum.add');
+Route::post('/forum/add' , [\App\Http\Controllers\forumController::class , 'postaddForum'])->name('forum.add');
 Route::get('/forum/{id}', [\App\Http\Controllers\forumController::class, "detailForum"])->name("forum.detail");
 Route::post('/forum/{id}', [\App\Http\Controllers\forumController::class, "addComment"])->name("comment.add");
 
