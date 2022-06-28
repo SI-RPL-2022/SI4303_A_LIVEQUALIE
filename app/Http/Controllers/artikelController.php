@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class artikelController extends Controller
 {
+
     public function indexArtikel(Request $req){
         $data = $req->session()->all();
         $artikel = Article::all();
@@ -19,18 +20,18 @@ class artikelController extends Controller
         return view('artikelAll' ,['data'=>$data , 'artikel' =>$artikel]);
     }
 
+    public function deleteArtikel($id){
+        $artikel = Article::find($id);
+        $artikel->delete();
+        return redirect(route('artikel.index'))->with('berhasil' , 'artikel berhasil di delete');
+    }
+
     public function detailArtikel($id , Request $req){
         $data = $req->session()->all();
         $artikel = Article::find($id);
         $artikel->view += 1;
         $artikel->update();
         return view('artikelDetail' ,['data'=>$data , 'artikel' =>$artikel]);
-    }
-    
-    public function deleteArtikel($id){
-        $artikel = Article::find($id);
-        $artikel->delete();
-        return redirect(route('artikel.index'))->with('berhasil' , 'artikel berhasil di delete');
     }
 
     public function createArtikel(Request $req){
