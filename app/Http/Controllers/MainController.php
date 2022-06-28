@@ -79,11 +79,28 @@ class MainController extends Controller
         
     }
 
-    public function getForum(Request $req) 
-    {   
+    public function dashboard(Request $req){
         $data = $req->session()->all();
-        // $influencer = Influencer::limit(3)->get();
-        
-        return view("forumindex", compact("data"));
-    }
+        $forum = count(Forum::all());
+        $comment = count(Comment::all());
+        $article = count(Article::all());
+        $donation = count(Donation::pluck('name')->unique());
+        $video = count(Videos::all());
+        $glos = count(Glosarium::all());
+        $question = count(Question::all());
+
+        $ambil = Article::all();
+        $view = 0 ;
+        foreach ($ambil as $t){
+            $view = $view + $t['view'];
+        }
+
+        $cek = Donation::all();
+        $total = 0 ;
+        foreach ($cek as $t){
+            $total = $total + $t['amount'];
+        }
+
+        return view('dashboard' , ['data'=>$data , 'article'=>$article, 'view'=>$view , 'forum'=>$forum, 'comment'=>$comment , 'video'=>$video , 'glos'=>$glos , 'donation'=>$donation , 'total'=>$total, 'question'=>$question]);
+}
 }

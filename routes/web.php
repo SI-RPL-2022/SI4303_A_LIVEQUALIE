@@ -18,9 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard' , [MainController::class , 'dashboard'])->name('dashboard');
 
 Route::get('/login', [MainController::class, "getLogin"])->name("login.index");
 Route::post('/login', [MainController::class, "postLogin"])->name("login.post");
